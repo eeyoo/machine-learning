@@ -6,7 +6,8 @@ machine-learning
 ### Machine Learning in Action
 - Peter Harrington [美]
 - 李锐 李鹏 曲亚东 王斌 翻译
-![](./book_cover.jpg)
+
+![](book_cover.jpg)
 
 使用Python阐述机器学习概念
 介绍并实现机器学习的主流算法

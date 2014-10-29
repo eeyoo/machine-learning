@@ -1,7 +1,7 @@
 ##files ignored by git
+machinelearninginaction/
 scikit-learn/
 testDigits/
 trainingDigits/
-
 *.pyc
 

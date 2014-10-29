@@ -1,3 +1,7 @@
 ##files ignored by git
+scikit-learn/
+testDigits/
+trainingDigits/
+
 *.pyc
 

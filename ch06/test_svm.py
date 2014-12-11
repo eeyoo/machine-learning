@@ -16,4 +16,4 @@ import svmMLiA
 #svmMLiA.testRbf(2.1)
 
 svmMLiA.testDigits()
-svmMLiA.testDigits(('rbf',20))
+#svmMLiA.testDigits(('rbf',20))

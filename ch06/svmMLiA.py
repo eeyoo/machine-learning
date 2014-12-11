@@ -4,6 +4,7 @@
 print __doc__
 
 from numpy import *
+#import operator
 
 def loadDataSet(fileName):
 	dataMat = []; labelMat = []
@@ -260,21 +261,29 @@ def loadImages(dirName):
 	hwLabels = []
 	trainingFileList = listdir(dirName)
 	m = len(trainingFileList)
-	trainingFileList = zeros((m,1024))
+	################################################
+	#### Error trainingFileList = zeros((m,1024))
+	################################################
+	trainingMat = zeros((m,1024))
 	for i in range(m):
 		fileNameStr = trainingFileList[i]
+		##print "fileNameStr type: %s" % type(fileNameStr); break
 		fileStr = fileNameStr.split('.')[0] #why split method is hided
 		classNumStr = int(fileStr.split('_')[0])
 		if classNumStr == 9: hwLabels.append(-1)
 		else: hwLabels.append(1)
-		traingMat[i,:] = img2Vector('%s/%s' % (dirName, fileNameStr))
+		trainingMat[i,:] = img2vector('%s/%s' % (dirName, fileNameStr))
 	return trainingMat, hwLabels
 
 def testDigits(kTup=('rbf', 10)):
+	print "kTup: ", kTup
+	print "Now is loading trainingDigits data..."
 	dataArr, labelArr = loadImages('trainingDigits')
+	print "Data load end! smoP algorithm will be used..."
 	b,alphas = smoP(dataArr, labelArr, 200, 0.0001, 10000, kTup)
 	datMat = mat(dataArr); labelMat = mat(labelArr).transpose()
-	svInd = nomzero(alphas.A>0)[0]
+	#svInd = nomzero(alphas.A>0)[0]
+	svInd = nonzero(alphas.A>0)[0]
 	sVs = datMat[svInd]
 	labelSV = labelMat[svInd];
 	print "there are %d Support Vectors" % shape(sVs)[0]
@@ -294,5 +303,4 @@ def testDigits(kTup=('rbf', 10)):
 		predict = kernelEval.T * multiply(labelSV, alphas[svInd]) + b
 		if sign(predict) != sign(labelArr[i]): errorCount += 1
 	print "the test error rate is: %f" % (float(errorCount)/m)
-
 

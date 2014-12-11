@@ -1,5 +1,5 @@
-from numpy import *
-import matplotlib.pyplot as plt
+#from numpy import *
+#import matplotlib.pyplot as plt
 #from os import listdir
 
 import kNN

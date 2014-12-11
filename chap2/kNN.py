@@ -97,7 +97,7 @@ def img2vector(filename):
     return returnVect
 
 def handwritingClassTest():
-    nottrainNum = 0
+    nottrainNum = 1000
     hwLabels = []
     trainingFileList = listdir('trainingDigits') #get data from the dir
     #use listdir() before import os.listdir() 
